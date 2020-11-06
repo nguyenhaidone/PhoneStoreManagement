@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PhoneStoreManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TBL_ChiTietHDB">
+    <Key>
+      <PropertyRef Name="MaHDB" />
+    </Key>
+    <Property Name="MaHDB" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaSP" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="ThanhTien" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="KhuyenMai" Type="Double" />
+  </EntityType>
+  <EntityType Name="TBL_ChiTietHoaDonNhap">
+    <Key>
+      <PropertyRef Name="MaHDN" />
+    </Key>
+    <Property Name="MaHDN" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaSP" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="DonGia" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ThanhTien" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="KhuyenMai" Type="Double" />
+  </EntityType>
+  <EntityType Name="TBL_HoaDonNhap">
+    <Key>
+      <PropertyRef Name="MaHoaDonNhap" />
+    </Key>
+    <Property Name="MaHoaDonNhap" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NgayNhap" Type="DateTime" />
+    <Property Name="MaNV" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MaNCC" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TongTien" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="TBL_KhachHang">
+    <Key>
+      <PropertyRef Name="MaKhach" />
+    </Key>
+    <Property Name="MaKhach" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenKhach" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TBL_Loai">
+    <Key>
+      <PropertyRef Name="MaLoai" />
+    </Key>
+    <Property Name="MaLoai" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenLoai" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TBL_ManHinh">
+    <Key>
+      <PropertyRef Name="MaManHinh" />
+    </Key>
+    <Property Name="MaManHinh" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenManHinh" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TBL_NhaCungCap">
+    <Key>
+      <PropertyRef Name="MaNhaCungCap" />
+    </Key>
+    <Property Name="MaNhaCungCap" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenNhaCungCap" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TBL_NhanHieu">
+    <Key>
+      <PropertyRef Name="MaNhanHieu" />
+    </Key>
+    <Property Name="MaNhanHieu" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenNhanHieu" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TBL_NhanVien">
+    <Key>
+      <PropertyRef Name="MaNhanVien" />
+    </Key>
+    <Property Name="MaNhanVien" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenNhanVien" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="GioiTinh" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="NgaySinh" Type="DateTime" />
+    <Property Name="MaQue" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TBL_Que">
+    <Key>
+      <PropertyRef Name="MaQue" />
+    </Key>
+    <Property Name="MaQue" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenQue" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TBL_SanPham">
+    <Key>
+      <PropertyRef Name="MaSP" />
+    </Key>
+    <Property Name="MaSP" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenSP" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MaLoai" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MaNhanHien" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="GiaNhap" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="GiaBan" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="ThoiGianBaoHanh" Type="DateTime" />
+    <Property Name="MaManHinh" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="AmThanh" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Anh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ChupAnh" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="PhoneStoreManagementEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TBL_ChiTietHDB" EntityType="Self.TBL_ChiTietHDB" />
+    <EntitySet Name="TBL_ChiTietHoaDonNhap" EntityType="Self.TBL_ChiTietHoaDonNhap" />
+    <EntitySet Name="TBL_HoaDonNhap" EntityType="Self.TBL_HoaDonNhap" />
+    <EntitySet Name="TBL_KhachHang" EntityType="Self.TBL_KhachHang" />
+    <EntitySet Name="TBL_Loai" EntityType="Self.TBL_Loai" />
+    <EntitySet Name="TBL_ManHinh" EntityType="Self.TBL_ManHinh" />
+    <EntitySet Name="TBL_NhaCungCap" EntityType="Self.TBL_NhaCungCap" />
+    <EntitySet Name="TBL_NhanHieu" EntityType="Self.TBL_NhanHieu" />
+    <EntitySet Name="TBL_NhanVien" EntityType="Self.TBL_NhanVien" />
+    <EntitySet Name="TBL_Que" EntityType="Self.TBL_Que" />
+    <EntitySet Name="TBL_SanPham" EntityType="Self.TBL_SanPham" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PhoneStoreManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TBL_ChiTietHDB">
+    <Key>
+      <PropertyRef Name="MaHDB" />
+    </Key>
+    <Property Name="MaHDB" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="MaSP" Type="nvarchar" MaxLength="250" />
+    <Property Name="SoLuong" Type="int" />
+    <Property Name="ThanhTien" Type="money" />
+    <Property Name="KhuyenMai" Type="float" />
+  </EntityType>
+  <EntityType Name="TBL_ChiTietHoaDonNhap">
+    <Key>
+      <PropertyRef Name="MaHDN" />
+    </Key>
+    <Property Name="MaHDN" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="MaSP" Type="nvarchar" MaxLength="250" />
+    <Property Name="SoLuong" Type="int" />
+    <Property Name="DonGia" Type="money" />
+    <Property Name="ThanhTien" Type="money" />
+    <Property Name="KhuyenMai" Type="float" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'PhoneStoreManagement.dbo.TBL_HoaDonBan' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="TBL_HoaDonBan">
+          <Property Name="MaHDB" Type="nvarchar" MaxLength="250" />
+          <Property Name="NgayBan" Type="datetime" />
+          <Property Name="MaNV" Type="nvarchar" MaxLength="250" />
+          <Property Name="MaKH" Type="nvarchar" MaxLength="250" />
+          <Property Name="TongTien" Type="money" />
+        </EntityType>-->
+  <EntityType Name="TBL_HoaDonNhap">
+    <Key>
+      <PropertyRef Name="MaHoaDonNhap" />
+    </Key>
+    <Property Name="MaHoaDonNhap" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="NgayNhap" Type="datetime" />
+    <Property Name="MaNV" Type="nvarchar" MaxLength="250" />
+    <Property Name="MaNCC" Type="nvarchar" MaxLength="250" />
+    <Property Name="TongTien" Type="money" />
+  </EntityType>
+  <EntityType Name="TBL_KhachHang">
+    <Key>
+      <PropertyRef Name="MaKhach" />
+    </Key>
+    <Property Name="MaKhach" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="TenKhach" Type="nvarchar" MaxLength="250" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="TBL_Loai">
+    <Key>
+      <PropertyRef Name="MaLoai" />
+    </Key>
+    <Property Name="MaLoai" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="TenLoai" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="TBL_ManHinh">
+    <Key>
+      <PropertyRef Name="MaManHinh" />
+    </Key>
+    <Property Name="MaManHinh" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="TenManHinh" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="TBL_NhaCungCap">
+    <Key>
+      <PropertyRef Name="MaNhaCungCap" />
+    </Key>
+    <Property Name="MaNhaCungCap" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="TenNhaCungCap" Type="nvarchar" MaxLength="250" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="250" />
+    <Property Name="SDT" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="TBL_NhanHieu">
+    <Key>
+      <PropertyRef Name="MaNhanHieu" />
+    </Key>
+    <Property Name="MaNhanHieu" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="TenNhanHieu" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="TBL_NhanVien">
+    <Key>
+      <PropertyRef Name="MaNhanVien" />
+    </Key>
+    <Property Name="MaNhanVien" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="TenNhanVien" Type="nvarchar" MaxLength="250" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="250" />
+    <Property Name="GioiTinh" Type="nvarchar" MaxLength="250" />
+    <Property Name="NgaySinh" Type="datetime" />
+    <Property Name="MaQue" Type="nvarchar" MaxLength="250" />
+    <Property Name="SDT" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="TBL_Que">
+    <Key>
+      <PropertyRef Name="MaQue" />
+    </Key>
+    <Property Name="MaQue" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="TenQue" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="TBL_SanPham">
+    <Key>
+      <PropertyRef Name="MaSP" />
+    </Key>
+    <Property Name="MaSP" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="TenSP" Type="nvarchar" MaxLength="250" />
+    <Property Name="MaLoai" Type="nvarchar" MaxLength="250" />
+    <Property Name="MaNhanHien" Type="nvarchar" MaxLength="250" />
+    <Property Name="GiaNhap" Type="money" />
+    <Property Name="GiaBan" Type="money" />
+    <Property Name="SoLuong" Type="int" />
+    <Property Name="ThoiGianBaoHanh" Type="datetime" />
+    <Property Name="MaManHinh" Type="nvarchar" MaxLength="250" />
+    <Property Name="AmThanh" Type="nvarchar" MaxLength="250" />
+    <Property Name="Anh" Type="nvarchar" MaxLength="500" />
+    <Property Name="ChupAnh" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityContainer Name="PhoneStoreManagementModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_ChiTietHDB" EntityType="Self.TBL_ChiTietHDB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_ChiTietHoaDonNhap" EntityType="Self.TBL_ChiTietHoaDonNhap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_HoaDonNhap" EntityType="Self.TBL_HoaDonNhap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_KhachHang" EntityType="Self.TBL_KhachHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_Loai" EntityType="Self.TBL_Loai" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_ManHinh" EntityType="Self.TBL_ManHinh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_NhaCungCap" EntityType="Self.TBL_NhaCungCap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_NhanHieu" EntityType="Self.TBL_NhanHieu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_NhanVien" EntityType="Self.TBL_NhanVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_Que" EntityType="Self.TBL_Que" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_SanPham" EntityType="Self.TBL_SanPham" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
