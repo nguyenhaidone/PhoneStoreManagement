@@ -18,9 +18,9 @@ namespace PhoneManagement
         public PhoneCatalog()
         {
             InitializeComponent();
-            using (PhoneStoreManagementEntities phoneManagementDBEntities = new PhoneStoreManagementEntities())
+            using (CuaHangBanDiDongEntities phoneManagementDBEntities = new CuaHangBanDiDongEntities())
             {
-                var showData = from db in phoneManagementDBEntities.TBL_SanPham select db;
+                var showData = from db in phoneManagementDBEntities.SanPhams select db;
                 dataGridView1.DataSource = showData.ToList();
             }
         }

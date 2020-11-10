@@ -14,9 +14,10 @@ namespace PhoneManagement
     public partial class AddNew : Form
     {
 
-        PhoneStoreManagementEntities dbAddNew = new PhoneStoreManagementEntities();
-        TBL_ChiTietHoaDonNhap tBL_ChiTietHDN = new TBL_ChiTietHoaDonNhap();
-        TBL_HoaDonNhap tBL_HoaDonNhap = new TBL_HoaDonNhap();
+        CuaHangBanDiDongEntities dbAddNew = new CuaHangBanDiDongEntities();
+        
+        ChiTietHDN chiTietHDN = new ChiTietHDN();
+        HoaDonNhap hoaDonNhap = new HoaDonNhap();
         public int state = 0;
         public string IDHoaDonNhap;
         public string IDChiTietHDN;
@@ -27,8 +28,6 @@ namespace PhoneManagement
             AddBinding();
         }
 
-
-
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
@@ -36,13 +35,13 @@ namespace PhoneManagement
 
         void AddBinding()
         {
-            txtIdImport.DataBindings.Add(new Binding("Text",dataGridView1.DataSource,"MaHoaDonNhap"));
+            txtIdImport.DataBindings.Add(new Binding("Text",dataGridView1.DataSource,"MaHDN"));
             txtIdSupplier.DataBindings.Add(new Binding("Text", dataGridView1.DataSource, "MaNCC"));
-            txtIdProduct.DataBindings.Add(new Binding("Text", dataGridView1.DataSource, "MaSP"));
+            txtIdProduct.DataBindings.Add(new Binding("Text", dataGridView1.DataSource, "MaSanPham"));
             txtPromo.DataBindings.Add(new Binding("Text", dataGridView1.DataSource, "KhuyenMai"));
             txtQuantity.DataBindings.Add(new Binding("Text", dataGridView1.DataSource, "SoLuong"));
             txtUnitPrice.DataBindings.Add(new Binding("Text", dataGridView1.DataSource, "DonGia"));
-            txtIdSaler.DataBindings.Add(new Binding("Text", dataGridView1.DataSource, "MaNV"));
+            txtIdSaler.DataBindings.Add(new Binding("Text", dataGridView1.DataSource, "MaNhanVien"));
             lbAllPrice.DataBindings.Add(new Binding("Text", dataGridView1.DataSource, "ThanhTien"));
             lbDate.DataBindings.Add(new Binding("Text", dataGridView1.DataSource, "NgayNhap"));
             lbTotalPrice.DataBindings.Add(new Binding("Text", dataGridView1.DataSource, "TongTien"));
@@ -64,24 +63,25 @@ namespace PhoneManagement
             txtIdSaler.Text = "";
             txtIdSupplier.Text = "";
             txtPromo.Text = "0.5";
-            txtQuantity.Text = "1";
+            txtQuantity.Text = "0";
             txtUnitPrice.Text = "0";
             lbDate.Text = DateTime.Now.ToString();
             lbAllPrice.Text = "0";
             lbTotalPrice.Text = "0";
-            var showDataSource = from dbHoaDonNhap in dbAddNew.TBL_HoaDonNhap 
-                                 join dbChiTietHDN in dbAddNew.TBL_ChiTietHoaDonNhap
-                                 on dbHoaDonNhap.MaHoaDonNhap equals dbChiTietHDN.MaHDN select new { 
-                                     dbHoaDonNhap.MaHoaDonNhap,
-                                     dbHoaDonNhap.MaNCC,
-                                     dbHoaDonNhap.MaNV,
-                                     dbHoaDonNhap.NgayNhap,
-                                     dbHoaDonNhap.TongTien,
-                                     dbChiTietHDN.KhuyenMai,
-                                     dbChiTietHDN.MaSP,
-                                     dbChiTietHDN.SoLuong,
-                                     dbChiTietHDN.DonGia,
-                                     dbChiTietHDN.ThanhTien,
+            var showDataSource = from dbHoaDonNhaps in dbAddNew.HoaDonNhaps 
+                                 join dbChiTietHDNs in dbAddNew.ChiTietHDNs
+                                 on dbHoaDonNhaps.MaHDN equals dbChiTietHDNs.MaHDN select new { 
+                                     dbHoaDonNhaps.MaHDN,
+                                     dbHoaDonNhaps.MaNCC,
+                                     dbHoaDonNhaps.MaNhanVien,
+                                     dbHoaDonNhaps.NgayNhap,
+                                     dbHoaDonNhaps.TongTien,
+
+                                     dbChiTietHDNs.KhuyenMai,
+                                     dbChiTietHDNs.MaSanPham,
+                                     dbChiTietHDNs.SoLuong,
+                                     dbChiTietHDNs.DonGia,
+                                     dbChiTietHDNs.ThanhTien,
                                  };
             dataGridView1.DataSource = showDataSource.ToList();
             groupBox1.Enabled = false;
@@ -109,10 +109,10 @@ namespace PhoneManagement
                 DialogResult dialogResult = MessageBox.Show(this, "Are you sure ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    TBL_ChiTietHoaDonNhap dltChiTietHDN = dbAddNew.TBL_ChiTietHoaDonNhap.Where(p => p.MaHDN == (txtIdImport.Text).ToString()).SingleOrDefault();
-                    TBL_HoaDonNhap dltHoaDonNhap = dbAddNew.TBL_HoaDonNhap.Where(p => p.MaHoaDonNhap == (txtIdImport.Text).ToString()).SingleOrDefault();
-                    dbAddNew.TBL_ChiTietHoaDonNhap.Remove(dltChiTietHDN);
-                    dbAddNew.TBL_HoaDonNhap.Remove(dltHoaDonNhap);
+                    ChiTietHDN dltChiTietHDN = dbAddNew.ChiTietHDNs.Where(p => p.MaHDN == (txtIdImport.Text).ToString()).SingleOrDefault();
+                    HoaDonNhap dltHoaDonNhap = dbAddNew.HoaDonNhaps.Where(p => p.MaHDN == (txtIdImport.Text).ToString()).SingleOrDefault();
+                    dbAddNew.ChiTietHDNs.Remove(dltChiTietHDN);
+                    dbAddNew.HoaDonNhaps.Remove(dltHoaDonNhap);
                     dbAddNew.SaveChanges();
                     renewPanel();
                 }
@@ -127,40 +127,40 @@ namespace PhoneManagement
         {
             if (state == 1)
             {
-                tBL_ChiTietHDN.MaHDN = txtIdImport.Text;
-                tBL_ChiTietHDN.MaSP = txtIdProduct.Text;
-                tBL_ChiTietHDN.SoLuong = Convert.ToInt32(txtQuantity.Text);
-                tBL_ChiTietHDN.KhuyenMai = Convert.ToDouble(txtPromo.Text);
-                tBL_ChiTietHDN.ThanhTien = Convert.ToDecimal((lbAllPrice.Text));
-                tBL_ChiTietHDN.DonGia = Convert.ToDecimal(txtUnitPrice.Text);
+                chiTietHDN.MaHDN = txtIdImport.Text;
+                chiTietHDN.MaSanPham = txtIdProduct.Text;
+                chiTietHDN.SoLuong = Convert.ToInt32(txtQuantity.Text);
+                chiTietHDN.KhuyenMai = Convert.ToDouble(txtPromo.Text);
+                chiTietHDN.ThanhTien = Convert.ToDouble((lbAllPrice.Text));
+                chiTietHDN.DonGia = Convert.ToDouble(txtUnitPrice.Text);
 
-                tBL_HoaDonNhap.MaHoaDonNhap = txtIdImport.Text;
-                tBL_HoaDonNhap.MaNCC = txtIdSupplier.Text;
-                tBL_HoaDonNhap.MaNV = txtIdSaler.Text;
-                tBL_HoaDonNhap.NgayNhap = DateTime.Now;
-                tBL_HoaDonNhap.TongTien = Convert.ToDecimal(lbTotalPrice.Text);
+                hoaDonNhap.MaHDN = txtIdImport.Text;
+                hoaDonNhap.MaNCC = txtIdSupplier.Text;
+                hoaDonNhap.MaNhanVien = txtIdSaler.Text;
+                hoaDonNhap.NgayNhap = DateTime.Now;
+                hoaDonNhap.TongTien = Convert.ToDouble(lbTotalPrice.Text);
 
-                dbAddNew.TBL_ChiTietHoaDonNhap.Add(tBL_ChiTietHDN);
+                dbAddNew.ChiTietHDNs.Add(chiTietHDN);
                 dbAddNew.SaveChanges();
-                dbAddNew.TBL_HoaDonNhap.Add(tBL_HoaDonNhap);
+                dbAddNew.HoaDonNhaps.Add(hoaDonNhap);
                 dbAddNew.SaveChanges();
                 renewPanel();
             }
             if(state == 2)
             {
-                TBL_ChiTietHoaDonNhap editChiTietHDN = dbAddNew.TBL_ChiTietHoaDonNhap.Find(IDHoaDonNhap);
-                TBL_HoaDonNhap editHoaDonNhap = dbAddNew.TBL_HoaDonNhap.Find(IDChiTietHDN);
+                ChiTietHDN editChiTietHDN = dbAddNew.ChiTietHDNs.Find(IDHoaDonNhap);
+                HoaDonNhap editHoaDonNhap = dbAddNew.HoaDonNhaps.Find(IDChiTietHDN);
 
                 editChiTietHDN.MaHDN = txtIdImport.Text;
-                editChiTietHDN.MaSP = txtIdProduct.Text;
+                editChiTietHDN.MaSanPham = txtIdProduct.Text;
                 editChiTietHDN.SoLuong = Convert.ToInt32(txtQuantity.Text);
                 editChiTietHDN.KhuyenMai = Convert.ToDouble(txtPromo.Text);
-                editChiTietHDN.ThanhTien = Convert.ToDecimal(lbTotalPrice.Text);
-                editHoaDonNhap.MaHoaDonNhap = txtIdImport.Text;
+                editChiTietHDN.ThanhTien = Convert.ToDouble(lbTotalPrice.Text);
+                editHoaDonNhap.MaHDN = txtIdImport.Text;
                 editHoaDonNhap.MaNCC = txtIdSupplier.Text;
-                editHoaDonNhap.MaNV = txtIdSaler.Text;
+                editHoaDonNhap.MaNhanVien = txtIdSaler.Text;
                 editHoaDonNhap.NgayNhap = Convert.ToDateTime(lbDate.Text);
-                editHoaDonNhap.TongTien = Convert.ToDecimal(lbAllPrice.Text);
+                editHoaDonNhap.TongTien = Convert.ToDouble(lbAllPrice.Text);
 
                 dbAddNew.SaveChanges();
                 renewPanel();
@@ -251,24 +251,25 @@ namespace PhoneManagement
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-                var showSearchResult = from dbHoaDonNhap in dbAddNew.TBL_HoaDonNhap
-                                       join dbChiTietHDN in dbAddNew.TBL_ChiTietHoaDonNhap
-                                       on dbHoaDonNhap.MaHoaDonNhap equals dbChiTietHDN.MaHDN
-                                       where dbHoaDonNhap.MaHoaDonNhap == txtIdImport.Text && dbChiTietHDN.MaHDN == txtIdImport.Text
+                var showSearchResult = from dbHoaDonNhaps in dbAddNew.HoaDonNhaps
+                                       join dbChiTietHDNs in dbAddNew.ChiTietHDNs
+                                       on dbHoaDonNhaps.MaHDN equals dbChiTietHDNs.MaHDN
+                                       where dbHoaDonNhaps.MaHDN == txtIdImport.Text && dbChiTietHDNs.MaHDN == txtIdImport.Text
                                        select new
                                        {
-                                           dbHoaDonNhap.MaHoaDonNhap,
-                                           dbHoaDonNhap.MaNCC,
-                                           dbHoaDonNhap.MaNV,
-                                           dbHoaDonNhap.NgayNhap,
-                                           dbHoaDonNhap.TongTien,
-                                           dbChiTietHDN.KhuyenMai,
-                                           dbChiTietHDN.MaSP,
-                                           dbChiTietHDN.SoLuong,
-                                           dbChiTietHDN.DonGia,
-                                           dbChiTietHDN.ThanhTien,
+                                           dbHoaDonNhaps.MaHDN,
+                                           dbHoaDonNhaps.MaNCC,
+                                           dbHoaDonNhaps.MaNhanVien,
+                                           dbHoaDonNhaps.NgayNhap,
+                                           dbHoaDonNhaps.TongTien,
+                                           dbChiTietHDNs.KhuyenMai,
+                                           dbChiTietHDNs.MaSanPham,
+                                           dbChiTietHDNs.SoLuong,
+                                           dbChiTietHDNs.DonGia,
+                                           dbChiTietHDNs.ThanhTien,
                                        };
-                dataGridView1.DataSource = showSearchResult.ToList();
+            
+            dataGridView1.DataSource = showSearchResult.ToList();
                 groupBox1.Enabled = false;
         }
 

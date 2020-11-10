@@ -16,7 +16,7 @@ namespace PhoneManagement
         {
             InitializeComponent();
             customizeDesign();
-            ConnectDB.OpenConnection();
+            /*ConnectDB.OpenConnection();*/
         }
 
         private void customizeDesign()
@@ -104,6 +104,11 @@ namespace PhoneManagement
         private void AddNew_Click(object sender, EventArgs e)
         {
             openChildForm(new AddNew());
+        }
+
+        private void Bills_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Bills());
         }
     }
     

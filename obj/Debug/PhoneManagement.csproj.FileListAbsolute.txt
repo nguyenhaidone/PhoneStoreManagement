@@ -20,3 +20,4 @@ D:\Prj C#\PhoneManagement\bin\Debug\EntityFramework.dll
 D:\Prj C#\PhoneManagement\bin\Debug\EntityFramework.SqlServer.dll
 D:\Prj C#\PhoneManagement\bin\Debug\EntityFramework.xml
 D:\Prj C#\PhoneManagement\bin\Debug\EntityFramework.SqlServer.xml
+D:\Prj C#\PhoneManagement\obj\Debug\PhoneManagement.Bills.resources

@@ -36,7 +36,7 @@
       <PropertyRef Name="MaHoaDonNhap" />
     </Key>
     <Property Name="MaHoaDonNhap" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="NgayNhap" Type="DateTime" />
+    <Property Name="NgayNhap" Type="DateTime" Precision="3" />
     <Property Name="MaNV" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="MaNCC" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="TongTien" Type="Decimal" Precision="19" Scale="4" />
@@ -87,7 +87,7 @@
     <Property Name="TenNhanVien" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="DiaChi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="GioiTinh" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="NgaySinh" Type="DateTime" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="3" />
     <Property Name="MaQue" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="SDT" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
   </EntityType>
@@ -109,13 +109,13 @@
     <Property Name="GiaNhap" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="GiaBan" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="SoLuong" Type="Int32" />
-    <Property Name="ThoiGianBaoHanh" Type="DateTime" />
+    <Property Name="ThoiGianBaoHanh" Type="DateTime" Precision="3" />
     <Property Name="MaManHinh" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="AmThanh" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="Anh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="ChupAnh" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityContainer Name="PhoneStoreManagementEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="PhoneStoreManagementEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="TBL_ChiTietHDB" EntityType="Self.TBL_ChiTietHDB" />
     <EntitySet Name="TBL_ChiTietHoaDonNhap" EntityType="Self.TBL_ChiTietHoaDonNhap" />

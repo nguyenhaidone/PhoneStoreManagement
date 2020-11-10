@@ -42,7 +42,7 @@
             this.btnKhoHang = new System.Windows.Forms.Button();
             this.panelBanHangSubmenu = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.Bills = new System.Windows.Forms.Button();
             this.AddNew = new System.Windows.Forms.Button();
             this.PhoneCatalogue = new System.Windows.Forms.Button();
             this.btnBanHang = new System.Windows.Forms.Button();
@@ -214,7 +214,7 @@
             // 
             this.panelBanHangSubmenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(32)))), ((int)(((byte)(41)))));
             this.panelBanHangSubmenu.Controls.Add(this.button4);
-            this.panelBanHangSubmenu.Controls.Add(this.button3);
+            this.panelBanHangSubmenu.Controls.Add(this.Bills);
             this.panelBanHangSubmenu.Controls.Add(this.AddNew);
             this.panelBanHangSubmenu.Controls.Add(this.PhoneCatalogue);
             this.panelBanHangSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
@@ -236,18 +236,19 @@
             this.button4.Text = "button4";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // Bills
             // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(202)))), ((int)(((byte)(202)))));
-            this.button3.Location = new System.Drawing.Point(0, 80);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(178, 40);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.Bills.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Bills.FlatAppearance.BorderSize = 0;
+            this.Bills.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Bills.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(202)))), ((int)(((byte)(202)))));
+            this.Bills.Location = new System.Drawing.Point(0, 80);
+            this.Bills.Name = "Bills";
+            this.Bills.Size = new System.Drawing.Size(178, 40);
+            this.Bills.TabIndex = 2;
+            this.Bills.Text = "Bills";
+            this.Bills.UseVisualStyleBackColor = true;
+            this.Bills.Click += new System.EventHandler(this.Bills_Click);
             // 
             // AddNew
             // 
@@ -386,7 +387,7 @@
         private System.Windows.Forms.Button btnKhoHang;
         private System.Windows.Forms.Panel panelBanHangSubmenu;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button Bills;
         private System.Windows.Forms.Button AddNew;
         private System.Windows.Forms.Button PhoneCatalogue;
         private System.Windows.Forms.Button btnBanHang;
