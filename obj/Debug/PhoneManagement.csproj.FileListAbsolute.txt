@@ -21,3 +21,9 @@ D:\Prj C#\PhoneManagement\bin\Debug\EntityFramework.SqlServer.dll
 D:\Prj C#\PhoneManagement\bin\Debug\EntityFramework.xml
 D:\Prj C#\PhoneManagement\bin\Debug\EntityFramework.SqlServer.xml
 D:\Prj C#\PhoneManagement\obj\Debug\PhoneManagement.Bills.resources
+D:\Prj C#\PhoneManagement\obj\Debug\PhoneManagement.csproj.ResolveComReference.cache
+D:\Prj C#\PhoneManagement\obj\Debug\PhoneManagement.Report1.resources
+D:\Prj C#\PhoneManagement\obj\Debug\PhoneManagement.Report2.resources
+D:\Prj C#\PhoneManagement\obj\Debug\PhoneManagement.Report3.resources
+D:\Prj C#\PhoneManagement\obj\Debug\PhoneManagement.Report4.resources
+D:\Prj C#\PhoneManagement\obj\Debug\PhoneManagement.AboutStore.resources

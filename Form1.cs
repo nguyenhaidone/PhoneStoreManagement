@@ -72,15 +72,16 @@ namespace PhoneManagement
             showSubMenu(panelBaoCaoSubmenu);
         }
 
-        private Form activeForm = null;
-        private void openChildForm(Form childForm)
+        public Form activeForm = null;
+        public void openChildForm(Form childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
             activeForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
+            /*WindowState = FormWindowState.Minimized;
+            childForm.Dock = DockStyle.Fill;*/
             panelChildForm.Controls.Add(childForm);
             panelChildForm.Tag = childForm;
             childForm.BringToFront();
@@ -88,7 +89,7 @@ namespace PhoneManagement
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            openChildForm(new UIBill());
+            openChildForm(new AboutStore());
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -98,7 +99,7 @@ namespace PhoneManagement
 
         private void PhoneCatalogue_Click(object sender, EventArgs e)
         {
-            openChildForm(new PhoneCatalog());
+            openChildForm(new UIBill());
         }
 
         private void AddNew_Click(object sender, EventArgs e)
@@ -109,6 +110,41 @@ namespace PhoneManagement
         private void Bills_Click(object sender, EventArgs e)
         {
             openChildForm(new Bills());
+        }
+
+        private void btnReport1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Report1());
+        }
+
+        private void btnReport2_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Report2());
+        }
+
+        private void btnReport3_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Report3());
+        }
+
+        private void btnReport4_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Report4());
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCatalogue_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PhoneCatalog());
+        }
+
+        private void btnAboutStore_Click(object sender, EventArgs e)
+        {
+            openChildForm(new AboutStore());
         }
     }
     

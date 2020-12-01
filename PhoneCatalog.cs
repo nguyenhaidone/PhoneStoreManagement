@@ -18,15 +18,16 @@ namespace PhoneManagement
         public PhoneCatalog()
         {
             InitializeComponent();
-            using (CuaHangBanDiDongEntities phoneManagementDBEntities = new CuaHangBanDiDongEntities())
+            using (CuaHangBanDiDongV1Entities phoneManagementDBEntities = new CuaHangBanDiDongV1Entities())
             {
                 var showData = from db in phoneManagementDBEntities.SanPhams select db;
                 dataGridView1.DataSource = showData.ToList();
             }
         }
 
-           
-        
+        public string imgPath;
+
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -36,34 +37,39 @@ namespace PhoneManagement
         private void button1_Click(object sender, EventArgs e)
         {
             
-
-            /*TBL_SanPham tBL_SanPhamModel = new TBL_SanPham();
-            tBL_SanPhamModel.MaSP = "1";
-            tBL_SanPhamModel.TenSP = "Iphone";
-            tBL_SanPhamModel.MaLoai = "Iphone cl";
-            tBL_SanPhamModel.MaNhanHieu = "Apple";
-            tBL_SanPhamModel.GiaNhap = 1200;
-            tBL_SanPhamModel.GiaBan = 1300;
-            tBL_SanPhamModel.SoLuong = 23;
-            tBL_SanPhamModel.ThoiGianBaoHanh = new DateTime(2008, 5, 1, 8, 30, 52);
-            tBL_SanPhamModel.MaManHinh = "Iphone MH";
-            tBL_SanPhamModel.AmThanh = "Bomd sound";
-            tBL_SanPhamModel.Anh = "21312124124.psh";
-            tBL_SanPhamModel.ChupAnh = "10px";
-
-
-            using (PhoneManagementDBEntities phoneManagementDBEntities = new PhoneManagementDBEntities())
-            {
-                phoneManagementDBEntities.TBL_SanPham.Add(tBL_SanPhamModel);
-                phoneManagementDBEntities.SaveChanges();
-            }
-*/
-         
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void PhoneCatalog_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try 
+            { 
+                lbID.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                lbName.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+                lbCataloges.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+                lbBrandId.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
+                lbPriceExport.Text = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
+                lbPriceImport.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+                lbQuantity.Text = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
+                lnDate.Text = dataGridView1.SelectedRows[0].Cells[7].Value.ToString();
+                lbSoundCard.Text = dataGridView1.SelectedRows[0].Cells[9].Value.ToString();
+                lbResolution.Text = dataGridView1.SelectedRows[0].Cells[11].Value.ToString();
+                imgPath = dataGridView1.SelectedRows[0].Cells[10].Value.ToString();
+                pictureBox1.Image = Image.FromFile(@"" + imgPath + "");
+            }
+            catch(ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show(this, ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
